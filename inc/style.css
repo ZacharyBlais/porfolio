@@ -10,7 +10,7 @@ body {
     background-color: #010101;
     display: flex;
     justify-content: center;
-    overflow: hidden;
+    overflow-x: hidden;
     transition: all 0.5s ease;
 }
 
@@ -30,13 +30,13 @@ main {
     width: 15rem;
     height: 10rem;
     position: absolute;
-    top: 60%;
+    bottom: 10rem;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .clickMe {
-    background-color: red;
+    background-color: #ff0000;
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -72,7 +72,7 @@ main {
     left: 0;
     width: 100%;
     height: 30%;
-    background-color: rgb(170, 0, 0);
+    background-color: #940000;
     transform-origin: center bottom;
     transition: transform .1s ease;
 }
@@ -86,7 +86,7 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: rgb(170, 0, 0);
+    background-color: #940000;
 
 
 }
@@ -94,19 +94,22 @@ main {
 /****************Text section***************/
 
 .porfolio_section {
-    margin-top: 5rem;
-    padding: 0 5rem;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.bottom_section {
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
 }
 
 .info_container {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 12rem;
-    flex: 1;
+    width: 50%;
     color: aliceblue;
     font-size: 1.5rem;
     transform: translateX(-1000px);
@@ -137,10 +140,11 @@ main {
 }
 
 .name_section {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 2;
+    flex: 1;
     padding-top: 4rem;
     color: aliceblue;
 }
@@ -193,25 +197,32 @@ main {
 }
 
 
-/*********sociaux section*********/
+/*********social section*********/
 
 .social_section {
-    flex: 1;
+    width: 50%;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: start;
     align-items: center;
     gap: 5rem;
 }
 
 .social_section > .bar {
+    display: flex;
+    align-items: flex-end;
     width: 100%;
     height: 8rem;
+    position: absolute;
+    top: 0;
+    right: 0;
     background-color: aliceblue;
-    border-radius: 30px 0 0 30px;
-    transform: translate(130%, 0);
+    border-radius: 70px 0 0 70px;
+    transform: translate(130%, -10rem);
     z-index: 2;
 }
+
 
 .social_section > .socialMove {
     animation: socialAnimation 4s ease forwards;
@@ -220,23 +231,29 @@ main {
 .social_section i {
     color: white;
     font-size: 4rem;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.social_section i:hover {
+    transform: scale(1.2);
 }
 
 @keyframes socialAnimation {
     0% {
-        transform: translate(130%, 0);
+        transform: translate(130%, -10rem);
     }
     
     30% {
-        transform: translate(30%, 0);
+        transform: translate(30%, -10rem);
     }
 
     70% {
-        transform: translate(30%, 40rem);
+        transform: translate(30%, 30rem);
     }
 
     100% {
-        transform: translate(130%, 40rem);
+        transform: translate(130%, 30rem);
     }
 }
 
@@ -244,6 +261,58 @@ main {
     opacity: 0 !important;
 }
 
+
+@media (max-width: 1000px) {
+    body {
+        height: auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .name_section {
+        padding-top: 2rem;
+        margin: 0;
+    }
+    .porfolio_section {
+        gap: 2rem;
+    }
+    .bottom_section {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .button {
+        width: 8rem;
+        height: 5rem;
+        position: fixed;
+        bottom: 3rem;
+    }
+    .bar {
+        display: none !important;
+    }
+    .social_section {
+        padding: 1rem;
+        width: 100%;
+        max-width: 28rem;
+        gap: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 10rem;
+    }
+
+    .social_section i {
+        opacity: 1;
+        transition: all 0.3s ease;
+    }
+
+    .displayNone {
+        display: block;
+        opacity: 0;
+    }
+
+
+
+}
 
 
 

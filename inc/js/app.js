@@ -35,16 +35,20 @@ button.addEventListener('mousedown', () => {
     }
 
     if(clickCount == 8) {
+        let cooldown = 0;
+        if(window.innerWidth < 1000) {
+            cooldown = 1500;
+        }
         socialBar.classList.add('socialMove');
         setTimeout(() => {
             socialIcones[0].classList.remove('displayNone');
-        }, 1500);
+        }, 1500 - cooldown);
         setTimeout(() => {
             socialIcones[1].classList.remove('displayNone');
-        }, 1650);
+        }, 1650 - cooldown);
         setTimeout(() => {
             socialIcones[2].classList.remove('displayNone');
-        }, 1800);
+        }, 1800 - cooldown);
     }
 
     if(clickCount > 8) {
