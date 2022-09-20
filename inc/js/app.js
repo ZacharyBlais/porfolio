@@ -52,7 +52,7 @@ button.addEventListener('mousedown', () => {
     }
 
     if(clickCount > 8) {
-        body.style.backgroundColor = "#"+colorTable[Math.floor(Math.random() * colorTable.length)];
+        body.style.background = "#"+colorTable[Math.floor(Math.random() * colorTable.length)];
     }
 
     console.log(clickCount)
