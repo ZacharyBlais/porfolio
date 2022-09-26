@@ -5,8 +5,47 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.returnArrow {
+    position: absolute;
+    top: 4rem; 
+    left: 4rem;
+    font-size: 2rem;
+    background-color: aliceblue;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #232323;
+}
+
+.returnArrow .fa-arrow-rotate-left {
+    transform-origin: center center;
+    transition: all 0.5s ease;
+}
+
+.returnArrow:hover .fa-arrow-rotate-left {
+    transform: rotate(-360deg);
+}
+
+.w0 {
+    border: none;
+    width: 0 !important;
+}
+
+.opacity0 {
+    opacity: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
 body {
-    height: 100vh;
+    
     background-color: #232323;    
     display: flex;
     justify-content: center;
@@ -14,7 +53,11 @@ body {
     transition: all 0.5s ease;
 }
 
-main {
+body.home {
+    height: 100vh;
+}
+
+main.home {
     width: 100%;
     max-width: 1920px;
     overflow: hidden;
@@ -285,15 +328,15 @@ main {
     
 }
 
-.social_section i:first-of-type {
+.social_section a:first-of-type i {
     transition: opacity 0.5s 0s ease, transform 0.3s ease;
 }
 
-.social_section i:nth-of-type(2) {
+.social_section a:nth-of-type(2) i {
     transition: opacity 0.5s .3s ease, transform 0.3s ease;
 }
 
-.social_section i:last-of-type {
+.social_section a:last-of-type i {
     transition: opacity 0.5s .6s ease, transform 0.3s ease;
 }
 
@@ -327,19 +370,166 @@ main {
     opacity: 0 !important;
 }
 
-.w0 {
-    border: none;
-    width: 0 !important;
+
+
+
+
+
+
+
+
+/****************************Skills section***********************************/
+
+
+
+
+.skills_section {
+    width: 100%;
+    padding: 4rem 8rem;
+    color: aliceblue;
 }
+
+.skills_section h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+}
+
+main.skill_page {
+    width: 100%;
+}
+
+.skills_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 5rem;
+}
+
+.X_container {
+    grid-column: span 1/3;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.X_container p {
+    position: relative;
+    flex: 1;
+    font-size: 2rem;
+    text-align: end;
+}
+
+.X_container span {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    opacity: 0.5;
+    background-color: aliceblue;
+    width: 1px;
+    height: 40rem;
+}
+
+.graphic_element {
+    padding: 1rem 1rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-right:solid 1px aliceblue;
+}
+
+.graphic_element_line {
+    padding: 1rem 0;
+}
+
+.line {
+    height: 100%;
+    transition: width 1s ease, opacity 1s ease;
+}
+
+.html {
+    width: 95%;
+    background-color: #e34c26;
+}
+
+.fa-html5 {
+    color: #e34c26;
+}
+
+.css {
+    width: 85%;
+    background-color: #264de4;
+}
+
+.fa-css3-alt {
+    color: #264de4;
+}
+
+.js {
+    width: 80%;
+    background-color: #F0DB4F;
+}
+
+.fa-square-js {
+    color: #F0DB4F;
+}
+
+.php {
+    width: 90%;
+    background-color: #AEB2D5;
+}
+
+.fa-php {
+    color: #AEB2D5;
+}
+
+.laravel {
+    width: 70%;
+    background-color: #f05340;
+}
+
+.fa-laravel {
+    color: #f05340;
+}
+
+.sql {
+    width: 60%;
+    background-color: #00758f;
+}
+
+.fa-database {
+    color: #00758f;
+}
+
+.scss {
+    width: 40%;
+    background-color: #cd6799;
+}
+
+.fa-sass {
+    color: #cd6799;
+}
+
+.wordpress {
+    width: 30%;
+    background-color: #21759b;
+}
+
+.fa-wordpress {
+    color: #21759b;
+}
+
 
 
 @media (max-width: 1000px) {
     body {
         height: auto;
     }
-    h1 {
-        text-align: center;
-    }
+    
     .name_section {
         padding-top: 2rem;
         margin: 0;
@@ -372,12 +562,22 @@ main {
     }
 
     
+    
 
+    .graphic_element p {
+        display: none;
+    }
 
+    .skills_container {
+        grid-template-columns: 1fr 20fr;
+    }
+
+    .skills_section {
+        padding: 3rem 1rem;
+    }
+
+    .X_container span { 
+        height: 37rem;
+    }
 
 }
-
-
-
-
-
