@@ -1,7 +1,10 @@
+//Variables
+let counter = 0;
+
 if(document.title == "Accueil - Zachary Blais")
     homePage();
 else if(document.title == "Mes compétences") {
-    mySkillsPage()
+    mySkillsPage();
 }
 
 
@@ -110,5 +113,34 @@ function mySkillsPage() {
     }, 500);
     
 
+    //pc section
+
+    let nbImage = document.querySelectorAll('.pc_screen > div > div > div').length;
+    let imageWidth = document.querySelector('.pc_screen > div > div').offsetWidth;
+    
+    let pcButton = document.querySelectorAll('.pc_button');
+    let pcContainer = document.querySelector('.pc_screen > div > div');
+
+    pcButton.forEach(button => {
+        button.addEventListener('click', (e) => {
+            
+            if(e.currentTarget.classList.contains('left')) {
+                counter--;
+                if(counter < 0)
+                    counter = nbImage-1;
+            }
+            else if(e.currentTarget.classList.contains('right')) {
+                console.log(e.currentTarget.classList.contains('right'))
+                counter++;
+                console.log(nbImage)
+                if(counter > nbImage-1) {
+                    counter = 0;
+                }
+            }
+            console.log(counter);
+            pcContainer.style.transform = "translateX(-" + imageWidth * counter + "px)";
+        })
+        
+    })
 }
 
