@@ -213,7 +213,9 @@ main.home {
 
 .info_container img {
     width: 15rem;
+    height: 15rem;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .infoAppear {
@@ -572,6 +574,7 @@ main.skill_page {
 
 .exemple_section .pc_screen > div > div > div {
     min-width: 100%;
+    overflow-y: hidden;
 }
 
 .exemple_section img {

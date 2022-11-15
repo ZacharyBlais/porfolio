@@ -116,10 +116,26 @@ function mySkillsPage() {
     //pc section
 
     let nbImage = document.querySelectorAll('.pc_screen > div > div > div').length;
+    let images = document.querySelectorAll('.pc_screen > div > div > div > img');
+    let imagesContainer = document.querySelectorAll('.pc_screen > div > div > div');
     let imageWidth = document.querySelector('.pc_screen > div > div').offsetWidth;
     
     let pcButton = document.querySelectorAll('.pc_button');
     let pcContainer = document.querySelector('.pc_screen > div > div');
+    let scrollContainer = document.querySelector('.exemple_section .pc_screen > div');
+    let smallestImage = 99999;
+
+    images.forEach(item => {
+        if(item.offsetHeight < smallestImage)
+            smallestImage = item.offsetHeight;
+    })
+
+    console.log(smallestImage)
+
+    imagesContainer.forEach((item, key) => {
+        if(key != counter)
+        item.style.height = smallestImage + "px";
+    })
 
     pcButton.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -138,7 +154,15 @@ function mySkillsPage() {
                 }
             }
             console.log(counter);
+            scrollContainer.scrollTop = 0;
+            imagesContainer[counter].style.height = "auto";
             pcContainer.style.transform = "translateX(-" + imageWidth * counter + "px)";
+            setTimeout(() => {
+                imagesContainer.forEach((item, key) => {
+                    if(key != counter)
+                        item.style.height = smallestImage + "px";
+                })
+            }, 1000);
         })
         
     })
