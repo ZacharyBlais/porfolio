@@ -123,7 +123,10 @@ function mySkillsPage() {
     let pcButton = document.querySelectorAll('.pc_button');
     let pcContainer = document.querySelector('.pc_screen > div > div');
     let scrollContainer = document.querySelector('.exemple_section .pc_screen > div');
+    let texts = document.querySelectorAll('.exemple_section .legend > div');
+    let textWidth = document.querySelector('.exemple_section .legend').offsetWidth;
     let smallestImage = 99999;
+    let textPosition = 0;
 
     images.forEach(item => {
         if(item.offsetHeight < smallestImage)
@@ -148,12 +151,22 @@ function mySkillsPage() {
             else if(e.currentTarget.classList.contains('right')) {
                 console.log(e.currentTarget.classList.contains('right'))
                 counter++;
-                console.log(nbImage)
                 if(counter > nbImage-1) {
                     counter = 0;
                 }
             }
-            console.log(counter);
+            
+            if(counter >= 0 && counter <= 2) {
+                textPosition = 0;
+            }
+            else if(counter >= 3 && counter <= 6) {
+                textPosition = 1
+            }
+
+            texts.forEach((item) => {
+                item.style.transform = "translateX(-" + textPosition * (textWidth + 48) + "px)";
+            })
+
             scrollContainer.scrollTop = 0;
             imagesContainer[counter].style.height = "auto";
             pcContainer.style.transform = "translateX(-" + imageWidth * counter + "px)";
