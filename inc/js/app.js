@@ -21,16 +21,12 @@ function homePage() {
     let infoContainer = document.querySelector('.info_container');
     let socialIcones = document.querySelectorAll('.social_section i');
     let body = document.querySelector('body');
-    console.log(socialIcones)
     let clickCount = 0;
 
     let mouseDown = false;
 
     let colorTable = ['082032', '150050', '041C32', '321F28', '54123B', '202040', 'C70D3A', '232931', 'FF9898', '28518A'];
-    console.log(document.referrer);
-    if(document.referrer == "skills.html") {
-        console.log('file:///D:/projet/porfolio/skills.html')
-    }
+
 
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -87,8 +83,6 @@ function homePage() {
 
             body.style.background = "#" + colorTable[Math.floor(Math.random() * colorTable.length)];
         }
-
-        console.log(clickCount)
     }
 
     window.addEventListener('mouseup', () => {
@@ -118,7 +112,9 @@ function mySkillsPage() {
     let nbImage = document.querySelectorAll('.pc_screen > div > div > div').length;
     let images = document.querySelectorAll('.pc_screen > div > div > div > img');
     let imagesContainer = document.querySelectorAll('.pc_screen > div > div > div');
-    let imageWidth = document.querySelector('.pc_screen > div > div').offsetWidth;
+    let imageWidth = document.querySelector('.pc_screen > div > div img').offsetWidth;
+    
+    
     
     let pcButton = document.querySelectorAll('.pc_button');
     let pcContainer = document.querySelector('.pc_screen > div > div');
@@ -133,7 +129,6 @@ function mySkillsPage() {
             smallestImage = item.offsetHeight;
     })
 
-    console.log(smallestImage)
 
     imagesContainer.forEach((item, key) => {
         if(key != counter)
@@ -149,7 +144,6 @@ function mySkillsPage() {
                     counter = nbImage-1;
             }
             else if(e.currentTarget.classList.contains('right')) {
-                console.log(e.currentTarget.classList.contains('right'))
                 counter++;
                 if(counter > nbImage-1) {
                     counter = 0;
@@ -167,8 +161,12 @@ function mySkillsPage() {
                 item.style.transform = "translateX(-" + textPosition * (textWidth + 48) + "px)";
             })
 
+            console.log(imageWidth);
             scrollContainer.scrollTop = 0;
             imagesContainer[counter].style.height = "auto";
+
+            imageWidth = document.querySelector('.pc_screen > div > div img').offsetWidth;
+
             pcContainer.style.transform = "translateX(-" + imageWidth * counter + "px)";
             setTimeout(() => {
                 imagesContainer.forEach((item, key) => {
@@ -214,7 +212,6 @@ setInterval(pointerFollow, 16);
 
 function pointerFollow()
 {
-    console.log(pointerX);
     
     position = pointer.getBoundingClientRect();
     positionMini = pointerMini.getBoundingClientRect();
