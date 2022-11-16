@@ -537,6 +537,7 @@ main.skill_page {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    margin-bottom: 4rem;
 }
 
 .exemple_section .pc {
@@ -574,6 +575,8 @@ main.skill_page {
 .exemple_section .pc_screen {
     max-width: 70rem;
     height: 40rem;
+    max-height: 40rem;
+    min-width: 20rem;
     background-color: white;
     border-radius: 25px;
     border: 2rem #0e0e0e solid ;
@@ -705,9 +708,21 @@ main.skill_page {
         height: 37rem;
     }
 
+    .exemple_section {
+        padding: 0.5rem;
+    }
 
+    .exemple_section .pc_screen {
+        border: 1.5rem #0e0e0e solid ;
+    }
     
-
+    .returnArrow {
+        top: 1rem;
+        left: 1rem;
+        font-size: 1rem;
+        width: 2rem;
+        height: 2rem;
+    }
     
 
 }
