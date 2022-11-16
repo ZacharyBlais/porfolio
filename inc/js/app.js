@@ -181,3 +181,152 @@ function mySkillsPage() {
     })
 }
 
+
+//Pointer follow
+
+let delayFollow = 8;
+let pointerX = 0;
+let pointerY = 0;
+let pointerXMini = 0;
+let pointerYMini = 0;
+const pointer = document.getElementById("pointer");
+const pointerMini = document.getElementById("miniPointer");
+let pointerVeloX = 0;
+let pointerVeloY = 0;
+let pointerVeloXMini = 0;
+let pointerVeloYMini = 0;
+let position = pointer.getBoundingClientRect();
+let positionMini = pointerMini.getBoundingClientRect();
+
+document.onmousemove = function(event) {
+    pointerX = (event.clientX) - (position.width)/2;
+    pointerY = (event.clientY) - (position.height)/2;
+    pointerXMini = (event.clientX) - (positionMini.width)/2;
+    pointerYMini = (event.clientY) - (positionMini.height)/2;
+    
+}
+
+
+
+
+
+setInterval(pointerFollow, 16);
+
+function pointerFollow()
+{
+    console.log(pointerX);
+    
+    position = pointer.getBoundingClientRect();
+    positionMini = pointerMini.getBoundingClientRect();
+
+    follow(position.left, position.top+(window.scrollY), pointerX, pointerY+(window.scrollY), positionMini.left, positionMini.top+(window.scrollY), pointerXMini, pointerYMini+(window.scrollY));
+
+
+}
+
+function follow(x, y, xTarget, yTarget, xmini, ymini, xTargetMini, yTargetMini) {
+    if(x !== xTarget || y !== yTarget)
+    {
+        if(x < xTarget)
+        {
+            pointerVeloX = (xTarget - x)/delayFollow;
+            if(pointerVeloX < 1 && pointerVeloX != 0)
+                pointerVeloX = 1;
+
+            if((xTarget - x) < 2 && (xTarget - x) > -2)
+                pointerVeloX = 0;
+
+        }
+        else if(x > xTarget)
+        {
+            pointerVeloX = (x - xTarget)/delayFollow;
+            if(pointerVeloX < 1 && pointerVeloX != 0)
+                pointerVeloX = 1;
+
+                if((x - xTarget) < 2 && (x - xTarget) > -2)
+                pointerVeloX = 0;
+
+                pointerVeloX *= -1;
+        }
+
+        if(y < yTarget)
+        {
+            pointerVeloY = (yTarget - y)/delayFollow;
+            if(pointerVeloY < 1 && pointerVeloY != 0)
+                pointerVeloY = 1;
+
+            if((yTarget - y) < 2 && (yTarget - y) > -2)
+                pointerVeloY = 0;
+
+        }
+        else if(y > yTarget)
+        {
+            pointerVeloY = (y - yTarget)/delayFollow;
+            if(pointerVeloY < 1 && pointerVeloY != 0)
+                pointerVeloY = 1;
+
+            if((y - yTarget) < 2 && (y - yTarget) > -2)
+                pointerVeloY = 0;
+
+                pointerVeloY *= -1;
+        }
+    }
+
+
+
+    
+
+    if(xmini !== xTargetMini || ymini !== yTargetMini)
+    {
+        if(xmini < xTargetMini)
+        {
+            pointerVeloXMini = (xTargetMini - xmini)/(delayFollow/2);
+            if(pointerVeloXMini < 1 && pointerVeloXMini != 0)
+                pointerVeloXMini = 1;
+
+            if((xTargetMini - xmini) < 2 && (xTargetMini - xmini) > -2)
+                pointerVeloXMini = 0;
+
+        }
+        else if(xmini > xTargetMini)
+        {
+            pointerVeloXMini = (xmini - xTargetMini)/(delayFollow/2);
+            if(pointerVeloXMini < 1 && pointerVeloXMini != 0)
+                pointerVeloXMini = 1;
+
+                if((xmini - xTargetMini) < 2 && (xmini - xTargetMini) > -2)
+                pointerVeloXMini = 0;
+
+                pointerVeloXMini *= -1;
+        }
+
+        if(ymini < yTargetMini)
+        {
+            pointerVeloYMini = (yTargetMini - ymini)/(delayFollow/2);
+            if(pointerVeloYMini < 1 && pointerVeloYMini != 0)
+                pointerVeloYMini = 1;
+
+            if((yTargetMini - ymini) < 2 && (yTargetMini - ymini) > -2)
+                pointerVeloYMini = 0;
+
+        }
+        else if(ymini > yTargetMini)
+        {
+            pointerVeloYMini = (ymini - yTargetMini)/(delayFollow/2);
+            if(pointerVeloYMini < 1 && pointerVeloYMini != 0)
+                pointerVeloYMini = 1;
+
+            if((ymini - yTargetMini) < 2 && (ymini - yTargetMini) > -2)
+                pointerVeloYMini = 0;
+
+                pointerVeloYMini *= -1;
+        }
+    }
+
+    pointerMini.style.left = xmini + pointerVeloXMini + "px";
+    pointerMini.style.top = ymini + pointerVeloYMini + "px";
+    pointer.style.left = x + pointerVeloX + "px";
+    pointer.style.top = y + pointerVeloY + "px";
+
+}
+

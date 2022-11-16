@@ -5,6 +5,25 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+/* Pointer */
+#miniPointer, #pointer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: solid 3px white;
+    position: absolute;
+    transform-origin: center center;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    pointer-events: none
+}
+
+#miniPointer {
+    width: 10px;
+    height: 10px;
+}
+
 .returnArrow {
     position: absolute;
     top: 4rem; 
@@ -55,6 +74,7 @@ body {
 
 body.home {
     height: 100vh;
+    position: relative;
 }
 
 main.home {
@@ -130,7 +150,7 @@ main.home {
 
 
 .clickMe:hover {
-    transform: translateY(0.1rem);
+    transform: translateY(0.2rem);
 }
 
 .button .pressed {
@@ -656,6 +676,10 @@ main.skill_page {
 @media (max-width: 1000px) {
     body {
         height: auto;
+    }
+
+    #miniPointer, #pointer {
+        display: none;
     }
     
     .name_section {
