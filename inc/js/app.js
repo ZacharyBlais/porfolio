@@ -26,23 +26,61 @@ function homePage() {
     let mouseDown = false;
 
     let colorTable = ['082032', '150050', '041C32', '321F28', '54123B', '202040', 'C70D3A', '232931', 'FF9898', '28518A'];
+    let color = null;
 
+    
+        
+    
 
     window.addEventListener('load', () => {
-        setTimeout(() => {
+
+        if(sessionStorage.getItem('indexVisited')) {
+            clickCount = 5;
+            allButton.style.transition = "none";
+            nameContainer.style.transition = "none";
+            chargingBar.style.transform = "scaleX(" + 0.2 * clickCount + ")";
+            allButton.style.bottom = "20%";
+            setTimeout(() => {
+                devWebP.classList.add("devMove")
+                nameH1.parentElement.style.border = "none";
+                
+            }, 500)
+            setTimeout(() => {
+                nameH1.classList.add('appear')
+                chargingBar.style.transformOrigin = "right";
+                chargingBar.style.transform = "scaleX(0)";
+    
+            }, 1000);
+            setTimeout(() => {
+                infoContainer.classList.add('infoAppear');
+                socialIcones.forEach(item => {
+                    item.classList.remove('opacity0');
+                })
+                sessionStorage.setItem('indexVisited', true);
+            }, 1300);
+        }
+
+        /*********************************************************** */
+        let spawnTime = 500;
+        if(sessionStorage.getItem('indexVisited')) {
+            spawnTime = 0;
             nameContainer.classList.remove('w0');
-            button.classList.add('spawnButton');
-            allButton.classList.remove('opacity0')
-        }, 500);
-        setTimeout(() => {
-            button_bottomRectangle.classList.remove('opacity0');
-            button_bottomRectangle.classList.add('spawnBottomButton');
-            button_bottomCircle.classList.add('spawnBottomButtonNext')
-        }, 1500);
-        setTimeout(() => {
-            button.style.cursor = "pointer";
-            button.addEventListener('mousedown', pressed);
-        }, 2500)
+        }
+            setTimeout(() => {
+                nameContainer.classList.remove('w0');
+                button.classList.add('spawnButton');
+                allButton.classList.remove('opacity0')
+            }, spawnTime);
+            setTimeout(() => {
+                button_bottomRectangle.classList.remove('opacity0');
+                button_bottomRectangle.classList.add('spawnBottomButton');
+                button_bottomCircle.classList.add('spawnBottomButtonNext')
+            }, spawnTime+1000);
+            setTimeout(() => {
+                button.style.cursor = "pointer";
+                button.addEventListener('mousedown', pressed);
+            }, spawnTime+2000)
+        
     });
 
 
@@ -63,6 +101,7 @@ function homePage() {
             setTimeout(() => {
                 devWebP.classList.add("devMove")
                 nameH1.parentElement.style.border = "none";
+                allButton.style.bottom = "20%";
             }, 500)
             setTimeout(() => {
                 nameH1.classList.add('appear')
@@ -75,13 +114,18 @@ function homePage() {
                 socialIcones.forEach(item => {
                     item.classList.remove('opacity0');
                 })
+                sessionStorage.setItem('indexVisited', true);
             }, 1300);
 
         }
 
         if (clickCount > 5) {
-
-            body.style.background = "#" + colorTable[Math.floor(Math.random() * colorTable.length)];
+            let newColor = null;
+            do {
+                 newColor= "#" + colorTable[Math.floor(Math.random() * colorTable.length)];
+            } while (color == newColor);
+            color = newColor;
+            body.style.background = color;
         }
     }
 

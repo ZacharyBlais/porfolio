@@ -93,9 +93,10 @@ main.home {
     width: 15rem;
     height: 10rem;
     position: absolute;
-    bottom: 10rem;
+    bottom: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 50%);
+    transition: all 1s ease;
 }
 
 .clickMe {
@@ -107,8 +108,19 @@ main.home {
     top: 0;
     left: 0;
     position: absolute;
-    transition: transform .1s ease;
+    transition: all .2s ease;
     transform-origin: center bottom;
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: 'Anton', sans-serif;
+    color: #940000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clickMe span {
+    transform: rotateX(40deg);
 }
 
 .spawnButton {
@@ -151,6 +163,7 @@ main.home {
 
 .clickMe:hover {
     transform: translateY(0.2rem);
+    color: aliceblue;
 }
 
 .button .pressed {
@@ -410,6 +423,9 @@ main.home {
     min-height: 100vh;
     padding: 4rem 8rem;
     color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .skills_section h1 {
@@ -426,7 +442,7 @@ main.skill_page {
 .skills_container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-rows: 5rem;
 }
 
@@ -457,11 +473,11 @@ main.skill_page {
 }
 
 .graphic_element {
-    padding: 1rem 1rem;
-    font-size: 2rem;
-    display: flex;
+    padding: 1rem 0.5rem 1rem 0;
+    font-size: 1.8rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
-    gap: 1rem;
     border-right:solid 1px aliceblue;
 }
 
@@ -546,6 +562,44 @@ main.skill_page {
     color: #21759b;
 }
 
+.scrollDownArrow {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    transform: scaleX(1.2);
+}
+
+.scrollDownArrow i {
+    font-size: 3rem;
+    color: aliceblue;
+    animation: arrowScroll 3s ease infinite;
+}
+
+@keyframes arrowScroll {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    90% {
+        opacity: 0;
+        transform: translateY(6rem);
+    }
+    
+    100% {
+        opacity: 0;
+        transform: translateY(6rem);
+    }
+}
+
 /* Porfolio Section */
 
 .skill_page {
@@ -558,19 +612,24 @@ main.skill_page {
     font-size: 2rem;
     color: aliceblue;
     font-family: 'Roboto Slab', serif;
-    margin-bottom: 2rem;
 }
 
 .exemple_section {
     min-height: 100vh;
 
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 4rem 4rem 0 4rem;
+}
+
+.exemple_section > div {
+    display: flex;
+    align-items: center;
 }
 
 .exemple_section .pc {
