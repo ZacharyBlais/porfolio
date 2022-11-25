@@ -430,7 +430,7 @@ main.home {
 
 .skills_section h1 {
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     font-family: 'Roboto Slab', serif;
 }
@@ -609,7 +609,7 @@ main.skill_page {
 }
 
 .skill_page h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: aliceblue;
     font-family: 'Roboto Slab', serif;
 }
@@ -617,13 +617,13 @@ main.skill_page {
 .exemple_section {
     min-height: 100vh;
 
-    padding: 2rem 2rem 0 2rem;
+    padding: 0rem 2rem 0 2rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-bottom: 4rem 4rem 0 4rem;
 }
 
@@ -759,6 +759,7 @@ main.skill_page {
     }
     .porfolio_section {
         gap: 2rem;
+        padding-bottom: 5rem;
     }
     .bottom_section {
         flex-direction: column;
@@ -769,8 +770,12 @@ main.skill_page {
         width: 8rem;
         height: 5rem;
         position: fixed;
-        bottom: 3rem;
+        bottom: 8rem;
     }
+    .clickMe > span {
+        font-size: 2rem;
+    }
+
     .bar {
         display: none !important;
     }
@@ -804,11 +809,17 @@ main.skill_page {
     }
 
     .exemple_section {
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
+        margin-bottom: 8rem;
     }
 
     .exemple_section .pc_screen {
         border: 1.5rem #0e0e0e solid ;
+    }
+
+    .exemple_section > div {
+        display: flex;
+        justify-content: center;
     }
     
     .returnArrow {
