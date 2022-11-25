@@ -437,6 +437,7 @@ main.home {
 
 main.skill_page {
     width: 100%;
+    max-width: 1920px;
 }
 
 .skills_container {
